@@ -66,14 +66,25 @@ node --test
 | `PLAN.md` | every decision, and the reason for each |
 
 There is no build step and no runtime dependency. What the repository holds is
-what the site serves. GitHub Pages serves it from `main`, root directory. The
-`.nojekyll` file stops Jekyll from touching it.
+what the site serves. The `.nojekyll` file stops Jekyll from touching it.
 
 `assets/fonts/OFL.txt` is the DM Sans licence. The SIL Open Font License
 requires it to stay with the font files.
 
 The repository holds Hippo trademarks, which aren't the author's to license, so
 it doesn't hold a licence file.
+
+## Continuous integration
+
+Two workflows sit in `.github/workflows/`.
+
+- `test.yml` runs `node --test` on a push to a branch and on a pull request.
+- `deploy.yml` runs the same tests on a push to `main`, then it copies the site
+  files and deploys them to GitHub Pages. The deployment leaves out the tests,
+  the plan and the workflow files.
+
+The Pages source must be **GitHub Actions**, in Settings > Pages. A branch
+source stops the workflow from deploying.
 
 ## Notes on the plan
 
