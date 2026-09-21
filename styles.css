@@ -1,0 +1,266 @@
+/*
+ * Hippo Rebrand 2025 v0.1 palette. Pink and Turquoise don't reach 4.5:1
+ * against white, so no text and no focus ring uses them on a light surface.
+ * The Turquoise download button carries Turquoise Darkest text, which gives
+ * 6.4:1.
+ */
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("assets/fonts/DMSans-Regular.woff2") format("woff2"),
+       url("assets/fonts/DMSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* The file names itself "DM Sans Medium" inside. The weight is what counts. */
+@font-face {
+  font-family: "DM Sans";
+  src: url("assets/fonts/DMSans-Medium.woff2") format("woff2"),
+       url("assets/fonts/DMSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("assets/fonts/DMSans-Bold.woff2") format("woff2"),
+       url("assets/fonts/DMSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --navy: #0c2340;
+  --navy-dark: #000522;
+  --navy-light: #6699cc;
+  --grey-lightest: #ffffff;
+  --grey-light: #eff2f2;
+  --grey: #dde4e6;
+  --grey-dark: #c9d0d2;
+  --turquoise: #6db9ab;
+  --turquoise-darkest: #002f26;
+  --radius: 12px;
+  --focus: 3px solid var(--navy-dark);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 24px 16px 48px;
+  background: var(--grey-light);
+  color: var(--navy);
+  font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.page {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.intro { margin-bottom: 20px; }
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.lede {
+  margin: 0;
+  font-weight: 500;
+}
+
+.card {
+  background: var(--grey-lightest);
+  border: 1px solid var(--grey);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+/* ---------------------------------------------------------------- the picker */
+
+.drop {
+  border: 2px dashed var(--grey-dark);
+  border-radius: var(--radius);
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.drop.is-over {
+  border-color: var(--navy);
+  background: var(--grey-light);
+}
+
+.drop-text {
+  margin: 0 0 12px;
+  font-weight: 500;
+}
+
+.note {
+  margin: 12px 0 0;
+  font-size: 0.875rem;
+}
+
+.error {
+  margin: 12px 0 0;
+  padding: 12px;
+  border-radius: var(--radius);
+  background: var(--grey-light);
+  border-left: 4px solid var(--navy);
+  font-weight: 500;
+}
+
+/* ----------------------------------------------------------------- the stage */
+
+.stage-holder {
+  background: var(--grey-lightest);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.stage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  /* The pointer handlers own every gesture on the stage. */
+  touch-action: none;
+  cursor: grab;
+  border-radius: var(--radius);
+}
+
+.stage:active { cursor: grabbing; }
+
+.hint {
+  margin: 12px 0 20px;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------- the controls */
+
+.field {
+  margin: 0 0 20px;
+  padding: 0;
+  border: 0;
+}
+
+.field-label {
+  display: block;
+  padding: 0;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--navy);
+}
+
+.radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+}
+
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--navy);
+}
+
+/* ---------------------------------------------------------------- the actions */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+}
+
+.button {
+  font: inherit;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--navy);
+  color: var(--grey-lightest);
+  cursor: pointer;
+}
+
+.button:hover { background: var(--navy-dark); }
+
+/* The crop is encoded and the file is ready to save. */
+.button-go.is-ready {
+  background: var(--turquoise);
+  color: var(--turquoise-darkest);
+}
+
+.button-go.is-ready:hover { background: #5da697; }
+
+.button:disabled {
+  cursor: progress;
+  opacity: 0.7;
+}
+
+.meta {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.link {
+  font: inherit;
+  margin-top: 20px;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--navy);
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------- the rest */
+
+:focus-visible {
+  outline: var(--focus);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 380px) {
+  body { padding: 16px 12px 32px; }
+  .card { padding: 12px; }
+  .drop { padding: 24px 12px; }
+  h1 { font-size: 1.375rem; }
+}

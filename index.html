@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hippoify your profile picture</title>
+<meta name="description" content="Put the Hippo logomark on your profile picture. The photo stays in your browser.">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="assets/Hippo-logomark-navy.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="page">
+  <header class="intro">
+    <h1>Hippoify your profile picture</h1>
+    <p class="lede">Your photo stays in your browser. Nothing is uploaded.</p>
+  </header>
+
+  <section class="card" id="picker" aria-labelledby="picker-heading">
+    <h2 class="visually-hidden" id="picker-heading">Choose a photo</h2>
+    <div class="drop" id="drop">
+      <p class="drop-text">Drop a photo here, paste one, or</p>
+      <button type="button" class="button" id="choose">Choose a photo</button>
+      <p class="note">JPEG, PNG or WebP. iPhone HEIC photos need to be exported as JPEG first.</p>
+      <input type="file" class="visually-hidden" id="file" tabindex="-1"
+             accept="image/jpeg,image/png,image/webp">
+    </div>
+    <p class="error" id="error" role="alert" hidden></p>
+  </section>
+
+  <section class="card" id="editor" hidden aria-labelledby="editor-heading">
+    <h2 class="visually-hidden" id="editor-heading">Position your photo</h2>
+
+    <div class="stage-holder">
+      <canvas class="stage" id="stage" tabindex="0"
+              aria-label="Photo position. Drag to move the photo. The arrow keys move it and the plus and minus keys zoom."></canvas>
+    </div>
+    <p class="hint">Drag to move the photo. Scroll or pinch to zoom.</p>
+
+    <div class="field">
+      <label class="field-label" for="zoom">Zoom</label>
+      <input type="range" id="zoom" min="0" max="100" step="1" value="0">
+    </div>
+
+    <fieldset class="field">
+      <legend class="field-label">Logo colour</legend>
+      <div class="radios">
+        <label class="radio">
+          <input type="radio" name="variant" value="navy" checked> Navy
+        </label>
+        <label class="radio">
+          <input type="radio" name="variant" value="white"> White
+        </label>
+        <label class="radio">
+          <input type="radio" name="variant" value="grey"> Grey
+        </label>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="button" class="button button-go" id="download">Download</button>
+      <p class="meta" id="meta" aria-live="polite"></p>
+    </div>
+    <p class="note" id="soft" hidden></p>
+
+    <button type="button" class="link" id="reset">Choose a different photo</button>
+  </section>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
