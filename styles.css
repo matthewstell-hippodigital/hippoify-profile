@@ -239,6 +239,27 @@ input[type="radio"] {
   cursor: pointer;
 }
 
+/* ------------------------------------------------------------------- the help */
+
+.help { margin-top: 20px; }
+
+.help-heading {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.help p { margin: 0 0 12px; }
+
+.help p:last-child { margin-bottom: 0; }
+
+.help-link {
+  color: var(--navy);
+  font-weight: 500;
+}
+
+.help-link:hover { color: var(--navy-dark); }
+
 /* ------------------------------------------------------------------- the rest */
 
 :focus-visible {
